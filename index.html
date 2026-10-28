@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UCAR – Automobiles Huissoud</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== COULEURS UCAR : modifiez ici ===== */
+:root{
+  --orange:#FB8449;   /* le « u » */
+  --vert:#3CB371;     /* le « c » */
+  --turquoise:#29BCD3;/* le « a » */
+  --violet:#7B80C0;   /* le « r » */
+  --encre:#1B2030;
+  --fond:#FFFFFF;
+  --gris:#F4F6F9;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:"Nunito Sans",system-ui,sans-serif;color:var(--encre);background:var(--fond);line-height:1.6;font-size:17px}
+h1,h2,h3,.logo{font-family:Fredoka,"Nunito Sans",system-ui,sans-serif;line-height:1.1}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--encre);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+.logo{font-weight:700;font-size:2rem;letter-spacing:-.02em;text-decoration:none}
+.logo span:nth-child(1){color:var(--orange)}.logo span:nth-child(2){color:var(--vert)}
+.logo span:nth-child(3){color:var(--turquoise)}.logo span:nth-child(4){color:var(--violet)}
+
+header{position:sticky;top:0;background:#fffffff2;backdrop-filter:blur(6px);z-index:5;border-bottom:1px solid #e6e9ef}
+header .wrap{display:flex;align-items:center;gap:24px;padding-top:12px;padding-bottom:12px}
+header .agent{font-size:.85rem;color:#5a6275;line-height:1.3}
+nav{margin-left:auto;display:flex;gap:20px;font-weight:600;font-size:.95rem}
+nav a{text-decoration:none;padding:4px 0;border-bottom:3px solid transparent}
+nav a:hover{border-color:var(--turquoise)}
+.btn{display:inline-block;background:var(--encre);color:#fff;text-decoration:none;font-weight:700;padding:12px 22px;border-radius:999px}
+.btn:hover{background:#2f3650}
+.btn.clair{background:#fff;color:var(--encre)}
+
+/* Hero */
+.hero{padding:72px 0 0}
+.hero h1{font-size:clamp(2.4rem,6.5vw,4.6rem);font-weight:700;letter-spacing:-.03em;max-width:14ch}
+.hero p{font-size:1.2rem;max-width:46ch;margin:20px 0 28px;color:#39415a}
+.hero .actions{display:flex;gap:12px;flex-wrap:wrap}
+.bandes{display:grid;grid-template-columns:repeat(4,1fr);height:22px;margin-top:64px}
+.bandes i:nth-child(1){background:var(--orange)}.bandes i:nth-child(2){background:var(--vert)}
+.bandes i:nth-child(3){background:var(--turquoise)}.bandes i:nth-child(4){background:var(--violet)}
+
+section{padding:80px 0}
+section h2{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:600;letter-spacing:-.02em;margin-bottom:12px}
+.intro{max-width:56ch;color:#39415a;margin-bottom:36px}
+
+/* Véhicules : bandes de couleur */
+.vehicule{display:grid;grid-template-columns:1.1fr 2fr auto;gap:24px;align-items:center;padding:26px 28px;border-radius:22px;margin-bottom:14px}
+.vehicule h3{font-size:1.5rem;font-weight:600}
+.vehicule .prix{font-family:Fredoka,sans-serif;font-weight:600;font-size:1.25rem;white-space:nowrap}
+.c0{background:var(--orange)}.c1{background:var(--vert)}.c2{background:var(--turquoise)}.c3{background:var(--violet)}
+
+/* Étapes */
+#etapes{background:var(--gris)}
+.etapes{list-style:none;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:e}
+.etapes li{counter-increment:e;border-top:8px solid;padding-top:16px}
+.etapes li:nth-child(1){border-color:var(--orange)}.etapes li:nth-child(2){border-color:var(--vert)}
+.etapes li:nth-child(3){border-color:var(--turquoise)}.etapes li:nth-child(4){border-color:var(--violet)}
+.etapes li::before{content:counter(e);font-family:Fredoka,sans-serif;font-weight:700;font-size:2.4rem}
+.etapes h3{font-size:1.2rem;margin:4px 0 6px;font-weight:600}
+.etapes p{font-size:.97rem;color:#39415a}
+
+/* Documents + garage */
+.deux{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.docs{padding-left:0;list-style:none}
+.docs li{padding:10px 0 10px 34px;position:relative;border-bottom:1px solid #e6e9ef}
+.docs li::before{content:"";position:absolute;left:0;top:17px;width:18px;height:18px;border-radius:50%;background:var(--vert)}
+.garage{background:var(--turquoise);border-radius:26px;padding:36px}
+.garage p{margin-top:10px}
+
+/* Contact */
+#contact{background:var(--encre);color:#fff}
+#contact .intro{color:#c9cfdf}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.contact dt{font-family:Fredoka,sans-serif;font-weight:600;color:var(--orange);margin-top:18px}
+.contact dd{margin:2px 0 0}
+.contact table{border-collapse:collapse;width:100%}
+.contact td{padding:8px 0;border-bottom:1px solid #3a4260}
+.contact td:last-child{text-align:right;font-weight:700}
+footer{padding:28px 0;font-size:.85rem;color:#5a6275}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media(max-width:860px){
+  nav{display:none}
+  .vehicule,.deux,.contact{grid-template-columns:1fr}
+  .etapes{grid-template-columns:1fr 1fr}
+  section{padding:56px 0}
+}
+@media(max-width:480px){.etapes{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<script>
+/* =====================================================================
+   CONTENU DU SITE : modifiez uniquement les textes entre guillemets.
+   Pour ajouter un véhicule ou une étape, copiez une ligne { ... },
+   Pour en retirer un, supprimez la ligne.
+   Les informations marquées « À COMPLÉTER » sont des exemples.
+   ===================================================================== */
+const CONFIG = {
+  agence: "Agent Renault Dacia – Automobiles Huissoud",
+  sousTitre: "Agence UCAR · Station AVIA",
+  ville: "Saint-Genis-Pouilly",            // À VÉRIFIER
+
+  accroche: "Louez votre véhicule simplement, près de chez vous.",
+  intro: "Une voiture pour le week-end, un utilitaire pour un déménagement ou un véhicule de remplacement : réservez auprès de votre agence UCAR et partez en quelques minutes.",
+
+  telephone: "04 00 00 00 00",             // À COMPLÉTER
+  email: "contact@exemple.fr",             // À COMPLÉTER
+  adresse: "Adresse de l’agence, 01630 Saint-Genis-Pouilly", // À COMPLÉTER
+  lienReservation: "https://www.ucar.fr",  // lien vers la réservation en ligne
+
+  vehicules: [
+    { nom: "Citadines", modeles: "Renault Clio, Dacia Sandero… idéales pour la ville et les petits trajets.", prix: "dès 00 € / jour" },
+    { nom: "Berlines et SUV", modeles: "Dacia Duster, Renault Captur… pour la famille et les longs trajets.", prix: "dès 00 € / jour" },
+    { nom: "Premium", modeles: "BMW Série 1, BMW X1… pour un week-end ou un déplacement pro.", prix: "dès 00 € / jour" },
+    { nom: "Utilitaires", modeles: "Fourgons de 6 à 20 m³… pour déménager ou transporter.", prix: "dès 00 € / jour" }
+  ],
+
+  etapes: [
+    { titre: "Choisissez", texte: "Sélectionnez la catégorie de véhicule et vos dates de location." },
+    { titre: "Réservez", texte: "En ligne, par téléphone ou directement à l’agence." },
+    { titre: "Récupérez", texte: "Présentez vos documents, vérifiez le véhicule et prenez la route." },
+    { titre: "Rendez", texte: "Ramenez le véhicule à l’agence à la date prévue." }
+  ],
+
+  documentsTitre: "Documents à prévoir",
+  documents: [
+    "Permis de conduire en cours de validité",
+    "Pièce d’identité ou passeport",
+    "Justificatif de domicile récent",
+    "Carte bancaire au nom du conducteur (caution)"
+  ],
+
+  garageTitre: "Votre agence, un vrai garage",
+  garageTexte: "Automobiles Huissoud est agent Renault et Dacia, avec une station AVIA sur place. Vous louez, faites le plein et profitez des conseils d’une équipe de professionnels de l’automobile.",
+
+  horaires: [
+    ["Lundi – vendredi", "8h30 – 12h / 14h – 18h30"],
+    ["Samedi", "9h – 12h"],
+    ["Dimanche", "Fermé"]
+  ]
+};
+</script>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="UCAR" id="logo"><span>u</span><span>c</span><span>a</span><span>r</span></a>
+    <div class="agent" id="h-agent"></div>
+    <nav aria-label="Navigation principale">
+      <a href="#vehicules">Véhicules</a><a href="#etapes">Comment louer</a><a href="#agence">L’agence</a><a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <h1 id="accroche"></h1>
+      <p id="intro"></p>
+      <div class="actions">
+        <a class="btn" id="btn-resa" href="#">Réserver en ligne</a>
+        <a class="btn" id="btn-tel" href="#" style="background:var(--turquoise);color:var(--encre)">Appeler l’agence</a>
+      </div>
+    </div>
+    <div class="bandes" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  </div>
+
+  <section id="vehicules"><div class="wrap">
+    <h2>Nos véhicules</h2>
+    <p class="intro">Un véhicule pour chaque besoin. Les tarifs varient selon la durée et la saison.</p>
+    <div id="liste-vehicules"></div>
+  </div></section>
+
+  <section id="etapes"><div class="wrap">
+    <h2>Comment louer</h2>
+    <p class="intro">Quatre étapes, sans paperasse inutile.</p>
+    <ol class="etapes" id="liste-etapes"></ol>
+  </div></section>
+
+  <section id="agence"><div class="wrap deux">
+    <div>
+      <h2 id="docs-titre"></h2>
+      <ul class="docs" id="liste-docs"></ul>
+    </div>
+    <div class="garage">
+      <h2 id="garage-titre"></h2>
+      <p id="garage-texte"></p>
+    </div>
+  </div></section>
+
+  <section id="contact"><div class="wrap">
+    <h2>Nous trouver</h2>
+    <p class="intro">Passez à l’agence ou contactez-nous, nous vous répondons rapidement.</p>
+    <div class="contact">
+      <dl>
+        <dt>Adresse</dt><dd id="c-adresse"></dd>
+        <dt>Téléphone</dt><dd><a id="c-tel" href="#"></a></dd>
+        <dt>E-mail</dt><dd><a id="c-mail" href="#"></a></dd>
+        <dd style="margin-top:22px"><a class="btn clair" id="c-plan" target="_blank" rel="noopener" href="#">Ouvrir le plan</a></dd>
+      </dl>
+      <div><h3 style="font-size:1.25rem;font-weight:600;margin-bottom:8px">Horaires</h3><table id="c-horaires"></table></div>
+    </div>
+  </div></section>
+</main>
+
+<footer><div class="wrap"><span id="f-nom"></span><span>UCAR est une marque de ses propriétaires. Site de présentation d’agence.</span></div></footer>
+
+<script>
+const $ = id => document.getElementById(id);
+const C = CONFIG;
+document.title = "UCAR – " + C.agence;
+$("h-agent").innerHTML = C.agence + "<br>" + C.sousTitre;
+$("accroche").textContent = C.accroche;
+$("intro").textContent = C.intro;
+$("btn-resa").href = C.lienReservation;
+$("btn-tel").href = "tel:" + C.telephone.replace(/\s/g, "");
+$("liste-vehicules").innerHTML = C.vehicules.map((v, i) =>
+  `<div class="vehicule c${i % 4}"><h3>${v.nom}</h3><p>${v.modeles}</p><span class="prix">${v.prix}</span></div>`).join("");
+$("liste-etapes").innerHTML = C.etapes.map(e => `<li><h3>${e.titre}</h3><p>${e.texte}</p></li>`).join("");
+$("docs-titre").textContent = C.documentsTitre;
+$("liste-docs").innerHTML = C.documents.map(d => `<li>${d}</li>`).join("");
+$("garage-titre").textContent = C.garageTitre;
+$("garage-texte").textContent = C.garageTexte;
+$("c-adresse").textContent = C.adresse;
+$("c-tel").textContent = C.telephone; $("c-tel").href = "tel:" + C.telephone.replace(/\s/g, "");
+$("c-mail").textContent = C.email; $("c-mail").href = "mailto:" + C.email;
+$("c-plan").href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(C.agence + " " + C.adresse);
+$("c-horaires").innerHTML = C.horaires.map(h => `<tr><td>${h[0]}</td><td>${h[1]}</td></tr>`).join("");
+$("f-nom").textContent = "© " + new Date().getFullYear() + " " + C.agence;
+</script>
+</body>
+</html>
